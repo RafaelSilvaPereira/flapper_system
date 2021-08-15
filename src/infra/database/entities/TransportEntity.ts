@@ -1,8 +1,8 @@
 import { IBaseEntity } from './IBaseEntity';
 import { Column, Entity } from 'typeorm';
-import { EntityBuilderType } from '../types/EntityBuilderType';
+import { EntityBuilderType } from '../../utils/EntityBuilderType';
 
-@Entity()
+@Entity({name: 'transport'})
 export class TransportEntity extends IBaseEntity {
 
   @Column({name: 'origin_city', nullable: false})
@@ -12,8 +12,8 @@ export class TransportEntity extends IBaseEntity {
   readonly destinationCity: string;
 
   constructor(builder: EntityBuilderType<TransportEntity>) {
-    super(builder.generalData);
-    Object.assign(this, builder.data);
+    super(builder?.generalData);
+    Object.assign(this, builder?.data);
   }
 
 }

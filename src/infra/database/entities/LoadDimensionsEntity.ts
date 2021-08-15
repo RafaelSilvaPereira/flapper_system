@@ -1,9 +1,9 @@
 import { Column, Entity } from 'typeorm';
 import { IBaseEntity } from './IBaseEntity';
-import { EntityBuilderType } from '../types/EntityBuilderType';
+import { EntityBuilderType } from '../../utils/EntityBuilderType';
 
-@Entity()
-export class LoadEntity extends IBaseEntity {
+@Entity({name: 'load_dimensions'})
+export class LoadDimensionsEntity extends IBaseEntity {
 
   @Column({name: 'weight', nullable: false})
   readonly weightKG: number;
@@ -18,9 +18,9 @@ export class LoadEntity extends IBaseEntity {
   readonly dephtCM: number;
 
 
-  constructor(builder: EntityBuilderType<LoadEntity>) {
-    super(builder.generalData);
-    Object.assign(this, builder.data);
+  constructor(builder: EntityBuilderType<LoadDimensionsEntity>) {
+    super(builder?.generalData);
+    Object.assign(this, builder?.data);
   }
 
 }
