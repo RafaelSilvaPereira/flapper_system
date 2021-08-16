@@ -1,6 +1,7 @@
-import { LoadModel } from '../models/LoadModel';
+
 import { CubageWeightModel } from '../models/CubageWeightModel';
+import { LoadDimensionsModel } from '../models/LoadDimensionsModel';
 
 export abstract class CalculateCubedWeight {
-  abstract calculate(load: LoadModel): Promise<CubageWeightModel>;
+  abstract calculate(load: LoadDimensionsModel): Promise<CubageWeightModel>;
 }
