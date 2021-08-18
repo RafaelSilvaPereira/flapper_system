@@ -1,6 +1,6 @@
 import { EntityModelConverter } from './EntityModelConverter';
 import { TransportEntity } from '../../infra/database/entities/TransportEntity';
-import { TransportModel } from '../../main/models/TransportModel';
+import { TransportModel } from '../../core/models/TransportModel';
 import { Injectable } from '@nestjs/common';
 
 

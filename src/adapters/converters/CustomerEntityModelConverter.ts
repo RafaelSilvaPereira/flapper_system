@@ -1,13 +1,13 @@
 import { EntityModelConverter } from './EntityModelConverter';
 import { CustomerEntity } from '../../infra/database/entities/CustomerEntity';
-import { CustomerModel } from '../../main/models/CustomerModel';
+import { CustomerModel } from '../../core/models/CustomerModel';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class CustomerEntityModelConverter implements EntityModelConverter<CustomerEntity, CustomerModel> {
 
   async toEntity(model: CustomerModel): Promise<CustomerEntity> {
-    const { email, id, name, password, phone, username } = model;
+    const { email, id, name, phone } = model;
     return new CustomerEntity({
       generalData: {
         id: id,
@@ -16,19 +16,16 @@ export class CustomerEntityModelConverter implements EntityModelConverter<Custom
         name: name,
         phone: phone,
         email: email,
-        password: password,
-        username: username,
       },
     });
   }
 
   async toModel(entity: CustomerEntity): Promise<CustomerModel> {
-    let { email, id, name, password, phone, username } = entity;
+    let { email, id, name, phone } = entity;
     return new CustomerModel({
       name: name,
       id: id,
       email: email,
-      username: username,
       phone: phone
     });
   }

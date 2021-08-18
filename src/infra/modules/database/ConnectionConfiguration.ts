@@ -3,7 +3,7 @@ import {
   CustomerEntity,
   LoadDimensionsEntity,
   PositionQuotationEntity,
-  TransportEntity,
+  TransportEntity, UserEntity,
 } from '../../database/entities/exports.entities';
 
 export const ConnectionConfiguration = TypeOrmModule.forRoot({
@@ -14,6 +14,6 @@ export const ConnectionConfiguration = TypeOrmModule.forRoot({
   password: 'dev',
   database: 'flapper_system',
   insecureAuth: true,
-  entities: [CustomerEntity, LoadDimensionsEntity, PositionQuotationEntity, TransportEntity],
+  entities: [CustomerEntity, LoadDimensionsEntity, PositionQuotationEntity, TransportEntity, UserEntity],
   synchronize: false,
 });

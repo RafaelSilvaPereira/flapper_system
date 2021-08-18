@@ -1,20 +1,26 @@
 import { IBaseEntity } from '../entities/IBaseEntity';
-import { FindConditions, FindManyOptions, Repository } from 'typeorm';
-import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
+import { DeepPartial, Repository } from 'typeorm';
+import { validate } from 'class-validator';
 
 
 export abstract class BaseRepository<T extends IBaseEntity> extends Repository<T> {
-  async paginate(options: IPaginationOptions, searchOptions?: FindConditions<T> | FindManyOptions<T>): Promise<Pagination<T>> {
-    return paginate<T>(this, options);
+
+  async validateAndSave(entity: T): Promise<T> {
+    await this.validateEntity(entity);
+
+    const checkEntityType = entity as unknown as DeepPartial<T>;
+    const savedEntity = await this.save(checkEntityType);
+
+    return savedEntity;
   }
 
-  private async getLimit(limit: number): Promise<number> {
-    return limit > this.getMaxLimit() ? this.getMaxLimit() : limit;
-  }
 
-  protected getMaxLimit(): number {
-    return 2;
-  }
+  async validateEntity(entity: T) {
 
+    const validationErrors = await validate(entity);
+    for (let validationError of validationErrors) {
+      throw validationError;
+    }
+  }
 
 }
