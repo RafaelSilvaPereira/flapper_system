@@ -1,23 +1,24 @@
-import { SavePositionQuotation } from '../../core/interfaces/SavePositionQuotation';
+import { CreatePositionQuotation } from '../../core/interfaces/CreatePositionQuotation';
 import { PositionQuotationModel } from '../../core/models/PositionQuotationModel';
 import { Injectable } from '@nestjs/common';
-import { GetAllPositionQuotations } from '../../core/interfaces/GetAllPositionQuotations';
+import { GetAllPositionQuotation } from '../../core/interfaces/GetAllPositionQuotation';
 import { GetCurrentUserPositionQuotations } from '../../core/interfaces/GetCurrentUserPositionQuotations';
 import { CalculatePositionQuotationsCubedWeight } from '../../core/interfaces/CalculatePositionQuotationsCubedWeight';
+import { BaseDatabaseModel } from '../../core/models/BaseDatabaseModel';
 
 @Injectable()
 export class PositionQuotationService {
 
 
   constructor(
-    private readonly savePositionQuotation: SavePositionQuotation,
-    private readonly getAllPositionQuotations: GetAllPositionQuotations,
+    private readonly savePositionQuotation: CreatePositionQuotation,
+    private readonly getAllPositionQuotations: GetAllPositionQuotation,
     private readonly getCurrentUserPositionQuotations: GetCurrentUserPositionQuotations,
     private readonly calculatePositionQuotationsCubedWeight: CalculatePositionQuotationsCubedWeight
   ) {
   }
 
-  async save(model: PositionQuotationModel): Promise<PositionQuotationModel> {
+  async save(model: PositionQuotationModel): Promise<BaseDatabaseModel> {
     return this.savePositionQuotation.call(model);
   }
 

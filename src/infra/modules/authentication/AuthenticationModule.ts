@@ -3,9 +3,9 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthenticationService } from '../../../adapters/services/AuthenticationService';
 import { FindUserByUsernameAndPassword } from '../../../core/interfaces/FindUserByUsernameAndPassword';
-import { FindUserByUsernameUsecase } from '../../../core/usecases/FindUserByUsernameUsecase';
-import { FindUserByUsernameProtocol } from '../../../core/protocols/FindUserByUsernameProtocol';
-import { FindUserByUserNameRepositoryConnector } from '../../../adapters/connectors/FindUserByUserNameRepositoryConnector';
+import { FindUserByUsernameAndPasswordUsecase } from '../../../core/usecases/FindUserByUsernameAndPasswordUsecase';
+import { FindUserByUsernameAndPasswordProtocol } from '../../../core/protocols/FindUserByUsernameAndPasswordProtocol';
+import { FindUserByUsernameAndPasswordRepositoryConnector } from '../../../adapters/connectors/FindUserByUsernameAndPasswordRepositoryConnector';
 import { TypeConvertersModule } from '../features/TypeConvertersModule';
 import { CreateUser } from '../../../core/interfaces/CreateUser';
 import { CreateUserUsecase } from '../../../core/usecases/CreateUserUsecase';
@@ -23,11 +23,11 @@ const providers = [
   JwtStrategy,
   {
     provide: FindUserByUsernameAndPassword,
-    useClass: FindUserByUsernameUsecase,
+    useClass: FindUserByUsernameAndPasswordUsecase,
   },
   {
-    provide: FindUserByUsernameProtocol,
-    useClass: FindUserByUserNameRepositoryConnector,
+    provide: FindUserByUsernameAndPasswordProtocol,
+    useClass: FindUserByUsernameAndPasswordRepositoryConnector,
   },
   {
     provide: CreateUser,

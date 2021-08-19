@@ -30,9 +30,10 @@ export class PositionQuotationEntityModelConverter implements EntityModelConvert
   }
 
   async toModel(entity: PositionQuotationEntity): Promise<PositionQuotationModel> {
-    const load = await this.loadDimensionsEntityModelConverter.toModel(entity.load);
+
     return new PositionQuotationModel({
-      load: load,
+      id: entity.id,
+      load: await this.loadDimensionsEntityModelConverter.toModel(entity.load),
       transport: await this.transportEntityModelConverter.toModel(entity.transport),
       customer: await this.customerEntityModelConverter.toModel(entity.customer),
       createdById: entity.createdBy.id,

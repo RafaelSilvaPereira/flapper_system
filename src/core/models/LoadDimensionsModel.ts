@@ -1,3 +1,5 @@
+import { And, Or, RequiredAllOrOmitId, RequiredAllOrOmitKeys } from '../types/ConstructorsBuildingTypes';
+
 export class LoadDimensionsModel {
   readonly id?: string;
   readonly weightKG: number;
@@ -5,7 +7,7 @@ export class LoadDimensionsModel {
   readonly widthCM: number;
   readonly dephtCM: number;
 
-  constructor(builder: Required<Omit<LoadDimensionsModel, 'cubageFactor' | 'id'>> | Required<Omit<LoadDimensionsModel, 'cubageFactor'>> ) {
+  constructor(builder: RequiredAllOrOmitKeys<LoadDimensionsModel, 'cubageFactor' | 'id'>) {
     Object.assign(this, builder);
   }
 

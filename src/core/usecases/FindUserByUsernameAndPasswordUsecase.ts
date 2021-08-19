@@ -1,14 +1,14 @@
-import { FindUserByUsernameProtocol } from '../protocols/FindUserByUsernameProtocol';
+import { FindUserByUsernameAndPasswordProtocol } from '../protocols/FindUserByUsernameAndPasswordProtocol';
 import { FindUserByUsernameAndPassword } from '../interfaces/FindUserByUsernameAndPassword';
 import { UserCredentialsModel } from '../models/UserCredentialsModel';
 import { Injectable } from '@nestjs/common';
 import { UserModel } from '../models/UserModel';
 
 @Injectable()
-export class FindUserByUsernameUsecase implements FindUserByUsernameAndPassword {
+export class FindUserByUsernameAndPasswordUsecase implements FindUserByUsernameAndPassword {
 
   constructor(
-    private readonly findUserByUsernameProtocol: FindUserByUsernameProtocol,
+    private readonly findUserByUsernameProtocol: FindUserByUsernameAndPasswordProtocol,
   ) {
   }
 

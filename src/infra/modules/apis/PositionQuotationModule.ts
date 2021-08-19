@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { PositionQuotationController } from '../../api/controllers/PositionQuotationController';
-import { SavePositionQuotationProtocol } from '../../../core/protocols/SavePositionQuotationProtocol';
-import { SavePositionQuotationRepositoryConnector } from '../../../adapters/connectors/SavePositionQuotationRepositoryConnector';
-import { SavePositionQuotation } from '../../../core/interfaces/SavePositionQuotation';
-import { SavePositionQuotationUsecase } from '../../../core/usecases/SavePositionQuotationUsecase';
+import { CreatePositionQuotationProtocol } from '../../../core/protocols/CreatePositionQuotationProtocol';
+import { CreatePositionQuotationRepositoryConnector } from '../../../adapters/connectors/CreatePositionQuotationRepositoryConnector';
+import { CreatePositionQuotation } from '../../../core/interfaces/CreatePositionQuotation';
+import { CreatePositionQuotationUsecase } from '../../../core/usecases/CreatePositionQuotationUsecase';
 import { CalculateCubedWeight } from '../../../core/interfaces/CalculateCubedWeight';
 import { CalculateCubedWeightUsecase } from '../../../core/usecases/CalculateCubedWeightUsecase';
 import { TypeConvertersModule } from '../features/TypeConvertersModule';
@@ -14,7 +14,7 @@ import { PositionQuotationRepository } from '../../database/repositories/Positio
 import { TransportRepository } from '../../database/repositories/TransportRepository';
 import { PositionQuotationService } from '../../../adapters/services/PositionQuotationService';
 import { UserRepository } from '../../database/repositories/UserRepository';
-import { GetAllPositionQuotations } from '../../../core/interfaces/GetAllPositionQuotations';
+import { GetAllPositionQuotation } from '../../../core/interfaces/GetAllPositionQuotation';
 import { GetAllPositionQuotationUsecase } from '../../../core/usecases/GetAllPositionQuotationUsecase';
 import { GetAllPositionQuotationProtocol } from '../../../core/protocols/GetAllPositionQuotationProtocol';
 import { GetAllPositionQuotationRepositoryConnector } from '../../../adapters/connectors/GetAllPositionQuotationRepositoryConnector';
@@ -28,12 +28,12 @@ import { CalculatePositionQuotationsCubedWeightUsecase } from '../../../core/use
 const providers = [
   PositionQuotationService,
   {
-    provide: SavePositionQuotationProtocol,
-    useClass: SavePositionQuotationRepositoryConnector,
+    provide: CreatePositionQuotationProtocol,
+    useClass: CreatePositionQuotationRepositoryConnector,
   },
   {
-    provide: SavePositionQuotation,
-    useClass: SavePositionQuotationUsecase,
+    provide: CreatePositionQuotation,
+    useClass: CreatePositionQuotationUsecase,
   },
   {
     provide: CalculateCubedWeight,
@@ -44,7 +44,7 @@ const providers = [
     useClass: CalculatePositionQuotationsCubedWeightUsecase,
   },
   {
-    provide: GetAllPositionQuotations,
+    provide: GetAllPositionQuotation,
     useClass: GetAllPositionQuotationUsecase,
   },
   {

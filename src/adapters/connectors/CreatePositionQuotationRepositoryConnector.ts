@@ -1,4 +1,4 @@
-import { SavePositionQuotationProtocol } from '../../core/protocols/SavePositionQuotationProtocol';
+import { CreatePositionQuotationProtocol } from '../../core/protocols/CreatePositionQuotationProtocol';
 import { PositionQuotationModel } from '../../core/models/PositionQuotationModel';
 import { Injectable } from '@nestjs/common';
 import { PositionQuotationRepository } from '../../infra/database/repositories/PositionQuotationRepository';
@@ -8,9 +8,10 @@ import { LoadDimensionsRepository } from '../../infra/database/repositories/Load
 import { TransportRepository } from '../../infra/database/repositories/TransportRepository';
 import { PositionQuotationEntity } from '../../infra/database/entities/PositionQuotationEntity';
 import { UserRepository } from '../../infra/database/repositories/UserRepository';
+import { BaseDatabaseModel } from '../../core/models/BaseDatabaseModel';
 
 @Injectable()
-export class SavePositionQuotationRepositoryConnector implements SavePositionQuotationProtocol {
+export class CreatePositionQuotationRepositoryConnector implements CreatePositionQuotationProtocol {
 
   constructor(
     private readonly positionQuotationEntityModelConverter: PositionQuotationEntityModelConverter,
@@ -22,7 +23,7 @@ export class SavePositionQuotationRepositoryConnector implements SavePositionQuo
   ) {
   }
 
-  public async call(positionQuotationModel: PositionQuotationModel): Promise<PositionQuotationModel> {
+  public async call(positionQuotationModel: PositionQuotationModel): Promise<BaseDatabaseModel> {
     const convertedPositionQuotationEntity = await this.positionQuotationEntityModelConverter.toEntity(positionQuotationModel);
 
 
@@ -40,11 +41,14 @@ export class SavePositionQuotationRepositoryConnector implements SavePositionQuo
       },
     });
 
-
     const savedPositionQuotation = await this.positionQuotationRepository.validateAndSave(toSavedEntity);
 
 
-    return this.positionQuotationEntityModelConverter.toModel(savedPositionQuotation);
+    return new BaseDatabaseModel({
+      id: savedPositionQuotation.id,
+      createdAt: savedPositionQuotation.createdAt,
+      updatedAt: savedPositionQuotation.updatedAt,
+    });
   }
 
 }

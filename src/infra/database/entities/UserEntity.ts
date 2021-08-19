@@ -1,5 +1,5 @@
 import { IBaseEntity } from './IBaseEntity';
-import { EntityBuilderType } from '../../utils/EntityBuilderType';
+import { EntityBuilderTypeOmitKeys } from '../../utils/EntityBuilderType';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { PositionQuotationEntity } from './PositionQuotationEntity';
 import { IsNotEmpty, IsString, MinLength } from 'class-validator';
@@ -26,7 +26,7 @@ export class UserEntity extends IBaseEntity {
   )
   readonly positionQuotations: PositionQuotationEntity[];
 
-  constructor(builder: EntityBuilderType<UserEntity>) {
+  constructor(builder: EntityBuilderTypeOmitKeys<UserEntity, 'password' | 'positionQuotations'>) {
     super(builder?.generalData);
     Object.assign(this, builder?.data);
   }

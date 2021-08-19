@@ -10,7 +10,7 @@ import { UserEntityUserCredentialsConverter } from '../converters/UserEntityUser
 export class CreateUserRepositoryConnector implements CreateUserProtocol {
 
   constructor(
-    private readonly UserEntityUserCredentialsConverter: UserEntityUserCredentialsConverter,
+    private readonly userEntityUserCredentialsConverter: UserEntityUserCredentialsConverter,
     private readonly userRepository: UserRepository,
   ) {
   }
@@ -28,7 +28,7 @@ export class CreateUserRepositoryConnector implements CreateUserProtocol {
     }
 
     const entity = await this.userRepository.validateAndSave(
-      await this.UserEntityUserCredentialsConverter.toEntity(userCredentials),
+      await this.userEntityUserCredentialsConverter.toEntity(userCredentials),
     );
 
     return new BaseDatabaseModel({

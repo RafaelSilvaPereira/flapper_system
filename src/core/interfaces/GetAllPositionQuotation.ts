@@ -1,5 +1,5 @@
 import { PositionQuotationModel } from '../models/PositionQuotationModel';
 
-export abstract class GetAllPositionQuotations {
+export abstract class GetAllPositionQuotation {
   abstract call(): Promise<PositionQuotationModel[]>;
 }

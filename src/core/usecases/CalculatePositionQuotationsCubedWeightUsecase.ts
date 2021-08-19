@@ -9,7 +9,6 @@ export class CalculatePositionQuotationsCubedWeightUsecase implements CalculateP
   constructor(
     private readonly calculatedCubedWeight: CalculateCubedWeight,
   ) {
-
   }
 
 

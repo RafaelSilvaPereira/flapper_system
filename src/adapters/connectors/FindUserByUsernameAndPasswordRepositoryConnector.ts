@@ -1,11 +1,11 @@
-import { FindUserByUsernameProtocol } from '../../core/protocols/FindUserByUsernameProtocol';
+import { FindUserByUsernameAndPasswordProtocol } from '../../core/protocols/FindUserByUsernameAndPasswordProtocol';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { UserCredentialsModel } from '../../core/models/UserCredentialsModel';
 import { UserRepository } from '../../infra/database/repositories/UserRepository';
 import { UserModel } from '../../core/models/UserModel';
 
 @Injectable()
-export class FindUserByUserNameRepositoryConnector implements FindUserByUsernameProtocol {
+export class FindUserByUsernameAndPasswordRepositoryConnector implements FindUserByUsernameAndPasswordProtocol {
 
   constructor(
     private readonly userRepository: UserRepository,
