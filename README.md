@@ -45,6 +45,12 @@ $ npm run test
 $ npm run test:cov
 ```
 
+	
+### Nomenclatura:
+- O cliente será referenciado por Customer
+- As dimenções da carga serão referenciados por LoadDimension
+- As informações de transporte serão referenciadas por Transport
+- O cotação cotações serão referenciadas por PositionQuotation
 ### Considerações Sobre a arquitetura:
 Está sendo empregada a arquitetura limpa, nesse sistema
 sendo assim existe uma divisão em camadas do nosso sistema
