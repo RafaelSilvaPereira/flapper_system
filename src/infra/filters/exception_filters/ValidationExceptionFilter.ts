@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 
 export class ValidationExceptionFilter implements ExceptionFilter<ValidationError> {
   catch(exception: ValidationError, host: ArgumentsHost): any {
-    console.log(exception);
+  
 
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
