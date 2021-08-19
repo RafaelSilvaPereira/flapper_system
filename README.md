@@ -317,6 +317,8 @@ no body
 ### Jenny busca suas cotações:
 ---
 - Usuario: jenny
+- Configure O Header "Authorization: Bearer token"
+onde *token* é o token retornado após o login de Jenny
 - Request: [http://localhost:3000/position-quotation/my] [GET]
 ```
 no body
@@ -376,6 +378,7 @@ no body
 ### Rafael busca todas as cotações:
 ---
 - Usuario: rafael
+- Configure O Header "Authorization: Bearer token" onde *token* é o token retornado após o login de Rafael
 - Request: [http://localhost:3000/position-quotation/my] [GET]
 ```
 no body
