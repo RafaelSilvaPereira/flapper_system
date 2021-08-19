@@ -75,7 +75,7 @@ Essa API tem 5 rotas
 3. Criar uma cotação
 4. Visualizar todas as cotações
 5. Visualizar minhas cotações
-6. 
+
 
 Para explicar o funcionamento dela, vamos supor 2 usuarios, 'jenny' e 'rafael' que enviam cargas de um lugar para o outro, então
 *Importante: Todas as rotas abaixo enviam e recebem json, por tanto deve-se configurar o header de cada requisição para aceitar e enviar json*
@@ -83,14 +83,14 @@ Para explicar o funcionamento dela, vamos supor 2 usuarios, 'jenny' e 'rafael' q
 ---
 - Usuario: Jenny
 - Request: [http://localhost:3000/auth/create] [POST]
-```
+```json
 {
 	"username": "jenny",
 	"password": "1234"
 }
 ```
 - Response:
-```
+```json
 {
   "id": "5262ac93-26aa-4818-86aa-c7dd7c70b068",
   "createdAt": "2021-08-19T14:26:46.000Z",
@@ -100,10 +100,14 @@ Para explicar o funcionamento dela, vamos supor 2 usuarios, 'jenny' e 'rafael' q
 ---
 - Usuario: Rafael
 - Request: [http://localhost:3000/auth/create] [POST]
-```
+```json
+{
+	"username": "rafael",
+	"password": "1234"
+}
 ```
 - Response:
-```
+```json
 {
   "id": "5362bc93-14aa-4818-86aa-c7dd7c70b068",
   "createdAt": "2021-08-19T14:26:56.000Z",
@@ -113,77 +117,295 @@ Para explicar o funcionamento dela, vamos supor 2 usuarios, 'jenny' e 'rafael' q
 #### Jenny Loga-se no sistema
 ---
 - Usuario: Jenny
-- Request: [URL] [POST]
+- Request: [http://localhost:3000/auth/login] [POST]
 ```json
 {
-	"username": "rafael",
+	"username": "jenny",
 	"password": "1234"
 }
 ```
 - Response:
-```
+```json
+{
+"token": "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjdlYWI3NGE2LWNhYjctNDYwOS1iZTIwLWQzYzE4MDc0MzMyZCIsInVzZXJuYW1lIjoicmFmYWVsIn0.lYdPI2_2XOmcVC2MVgNZrDz2XSUaWf6E8jvPKMsnhkI",
+  "user": {
+    "id": "7eab74a6-cab7-4609-be20-d3c18074332d",
+    "username": "jenny"
+  }
+}
 ```
 ### Jenny Cria 2 Cotações
 ---
 - Usuario: Jenny
-- Request: [http://localhost:3000/auth/login] [POST]
-```
+- Configure O Header "Authorization: Bearer token"
+onde *token* é o token retornado após o login de Jenny
+- Request: [http://localhost:3000/position-quotation] [POST]
+```json
+{
+	"load": {
+		"weightKG": 1,
+		"heightCM": 10,
+		"widthCM": 100,
+		"dephtCM": 24
+	},
+	"customer": {
+		"name": "rafael",
+		"phone": "+55839988281",
+		"email": "rafael@gmail.com"
+	},	
+	"transport": {
+		"destinationCity": "Grande São",
+		"originCity": "Paulo Pessoa"
+	}
+}
 ```
 - Response:
-```
+```json
+{
+  "id": "ce01fef5-006c-473e-b2a9-47e2632fd253",
+  "createdAt": "2021-08-19T16:26:45.000Z",
+  "updatedAt": "2021-08-19T16:26:45.000Z"
+}
 ```
 ---
 - Usuario: Jenny
-- Request: [URL] [POST]
-```
+- Configure O Header "Authorization: Bearer token"
+onde *token* é o token retornado após o login de Jenny
+- Request: [http://localhost:3000/position-quotation] [POST]
+```json
+{
+	"load": {
+		"weightKG": 1,
+		"heightCM": 10,
+		"widthCM": 100,
+		"dephtCM": 12 
+	},
+	"customer": {
+		"name": "jenny",
+		"phone": "+55839988281",
+		"email": "jenny@gmail.com"
+	},	
+	"transport": {
+		"destinationCity": "Grande São",
+		"originCity": "Paulo Joao"
+	}
+}
 ```
 - Response:
-```
+```json
+{
+  "id": "5babce51-9f8a-48ce-8913-ebecd6a1bf1a",
+  "createdAt": "2021-08-19T16:27:33.000Z",
+  "updatedAt": "2021-08-19T16:27:33.000Z"
+}
 ```
 ### Rafael Cria 1 Cotação:
 ---
 - Usuario: Rafael
-- Request: [URL] [POST]
-```
+- Configure O Header "Authorization: Bearer token"
+onde *token* é o token retornado após o login de Rafael
+- Request: [http://localhost:3000/position-quotation] [POST]
+```json
+{
+	"load": {
+		"weightKG": 1,
+		"heightCM": 10,
+		"widthCM": 100,
+		"dephtCM": 6
+	},
+	"customer": {
+		"name": "rafael",
+		"phone": "+55839988281",
+		"email": "rafael@gmail.com"
+	},	
+	"transport": {
+		"destinationCity": "Grande São",
+		"originCity": "Paulo Joao"
+	}
+}
 ```
 - Response:
+```json
+{
+  "id": "6697ca45-e2e0-444d-aa99-22294777c5bc",
+  "createdAt": "2021-08-19T16:33:16.000Z",
+  "updatedAt": "2021-08-19T16:33:16.000Z"
+}
 ```
-```
+
 ### Um usuario busca todas as cotações:
 ---
 - Usuario: *
-- Request: [URL] [GET]
+- Request: [http://localhost:3000/position-quotation] [GET]
 ```
-```
-- Response:
-```
-```
-### Um usuario busca todas as cotações:
----
-- Usuario: *
-- Request: [URL] [GET]
-```
+no body
 ```
 - Response:
-```
+```json
+[
+  {
+    "id": "282cfe74-43b3-4a15-a416-c6cbd95d0787",
+    "load": {
+      "id": "910c43b1-364c-44cf-bc15-d1be14d52369",
+      "dephtCM": "12",
+      "widthCM": "100",
+      "heightCM": "10",
+      "weightKG": "1"
+    },
+    "transport": {
+      "id": "bfdc1c1e-1f23-42ca-93ab-9cbcdc0feef8",
+      "originCity": "Paulo Joao",
+      "destinationCity": "Grande São"
+    },
+    "customer": {
+      "name": "jenny",
+      "id": "ef305746-2ad9-4725-a580-7bf6cf33886f",
+      "email": "jenny@gmail.com",
+      "phone": "+55839988281"
+    },
+    "createdById": "5262ac93-26aa-4818-86aa-c7dd7c70b068",
+    "cubedWeight": 2
+  },
+  {
+    "id": "5babce51-9f8a-48ce-8913-ebecd6a1bf1a",
+    "load": {
+      "id": "24a571bb-c81c-4439-a0a3-02f5e231e570",
+      "dephtCM": "12",
+      "widthCM": "100",
+      "heightCM": "10",
+      "weightKG": "1"
+    },
+    "transport": {
+      "id": "0774f5a3-b7c9-4ed5-be79-0574257d8f61",
+      "originCity": "Paulo Joao",
+      "destinationCity": "Grande São"
+    },
+    "customer": {
+      "name": "jenny",
+      "id": "3e643035-b77f-4a6c-becf-05f7305bb2de",
+      "email": "jenny@gmail.com",
+      "phone": "+55839988281"
+    },
+    "createdById": "5262ac93-26aa-4818-86aa-c7dd7c70b068",
+    "cubedWeight": 2
+  },
+  {
+    "id": "6697ca45-e2e0-444d-aa99-22294777c5bc",
+    "load": {
+      "id": "6951cf6d-b697-4b41-9805-53823e3349cf",
+      "dephtCM": "6",
+      "widthCM": "100",
+      "heightCM": "10",
+      "weightKG": "1"
+    },
+    "transport": {
+      "id": "88a2d6a8-07af-4e38-99f4-5d3bf97af30c",
+      "originCity": "Paulo Joao",
+      "destinationCity": "Grande São"
+    },
+    "customer": {
+      "name": "rafael",
+      "id": "c7d86ea7-0801-4fcf-a687-459586130fe5",
+      "email": "rafael@gmail.com",
+      "phone": "+55839988281"
+    },
+    "createdById": "7eab74a6-cab7-4609-be20-d3c18074332d",
+    "cubedWeight": 1
+  }
+]
 ``` 
-### Jenny busca todas as cotações:
+### Jenny busca suas cotações:
 ---
 - Usuario: jenny
-- Request: [URL] [GET]
+- Request: [http://localhost:3000/position-quotation/my] [GET]
 ```
+no body
 ```
 - Response:
-```
+```json
+[
+  {
+    "id": "282cfe74-43b3-4a15-a416-c6cbd95d0787",
+    "load": {
+      "id": "910c43b1-364c-44cf-bc15-d1be14d52369",
+      "dephtCM": "12",
+      "widthCM": "100",
+      "heightCM": "10",
+      "weightKG": "1"
+    },
+    "transport": {
+      "id": "bfdc1c1e-1f23-42ca-93ab-9cbcdc0feef8",
+      "originCity": "Paulo Joao",
+      "destinationCity": "Grande São"
+    },
+    "customer": {
+      "name": "jenny",
+      "id": "ef305746-2ad9-4725-a580-7bf6cf33886f",
+      "email": "jenny@gmail.com",
+      "phone": "+55839988281"
+    },
+    "createdById": "5262ac93-26aa-4818-86aa-c7dd7c70b068",
+    "cubedWeight": 2
+  },
+  {
+    "id": "5babce51-9f8a-48ce-8913-ebecd6a1bf1a",
+    "load": {
+      "id": "24a571bb-c81c-4439-a0a3-02f5e231e570",
+      "dephtCM": "12",
+      "widthCM": "100",
+      "heightCM": "10",
+      "weightKG": "1"
+    },
+    "transport": {
+      "id": "0774f5a3-b7c9-4ed5-be79-0574257d8f61",
+      "originCity": "Paulo Joao",
+      "destinationCity": "Grande São"
+    },
+    "customer": {
+      "name": "jenny",
+      "id": "3e643035-b77f-4a6c-becf-05f7305bb2de",
+      "email": "jenny@gmail.com",
+      "phone": "+55839988281"
+    },
+    "createdById": "5262ac93-26aa-4818-86aa-c7dd7c70b068",
+    "cubedWeight": 2
+  }
+]
 ``` 
 
 ### Rafael busca todas as cotações:
 ---
-- Usuario: jenny
-- Request: [URL] [GET]
+- Usuario: rafael
+- Request: [http://localhost:3000/position-quotation/my] [GET]
 ```
+no body
 ```
 - Response:
-```
+```json
+[
+  {
+    "id": "6697ca45-e2e0-444d-aa99-22294777c5bc",
+    "load": {
+      "id": "6951cf6d-b697-4b41-9805-53823e3349cf",
+      "dephtCM": "6",
+      "widthCM": "100",
+      "heightCM": "10",
+      "weightKG": "1"
+    },
+    "transport": {
+      "id": "88a2d6a8-07af-4e38-99f4-5d3bf97af30c",
+      "originCity": "Paulo Joao",
+      "destinationCity": "Grande São"
+    },
+    "customer": {
+      "name": "rafael",
+      "id": "c7d86ea7-0801-4fcf-a687-459586130fe5",
+      "email": "rafael@gmail.com",
+      "phone": "+55839988281"
+    },
+    "createdById": "7eab74a6-cab7-4609-be20-d3c18074332d",
+    "cubedWeight": 1
+  }
+]
 ``` 
 
