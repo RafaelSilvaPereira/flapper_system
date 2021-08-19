@@ -68,4 +68,106 @@ sendo assim existe uma divisão em camadas do nosso sistema
     * protocols: são interfaces que atuam mediando as requisições impostas pelos usecases, e o executor (connector) que irá trazer os dados necessarios para responde-lás
     * modelos: os modelos de negocio do sistema
 
-### Como usar essa api
+### Sobre essa API:
+Essa API tem 5 rotas
+1. Criar um Usuario no sistema
+2. Fazer login 
+3. Criar uma cotação
+4. Visualizar todas as cotações
+5. Visualizar minhas cotações
+6. 
+
+Para explicar o funcionamento dela, vamos supor 2 usuarios, 'jenny' e 'rafael' que enviam cargas de um lugar para o outro, então
+*Importante: Todas as rotas abaixo enviam e recebem json, por tanto deve-se configurar o header de cada requisição para aceitar e enviar json*
+#### Jenny e Rafael criam um usuario no sistema
+---
+- Usuario: Jenny
+- Request: [URL] [TIPO]
+```
+```
+- Response:
+```
+```
+---
+- Usuario: Rafael
+- Request: [URL] [TIPO]
+```
+```
+- Response:
+```
+```
+
+para a rota "user", como nas imagens abaixo:
+#### Jenny Loga-se no sistema
+---
+- Usuario: Jenny
+- Request: [URL] [POST]
+```
+```
+- Response:
+```
+```
+### Jenny Cria 2 Cotações
+---
+- Usuario: Jenny
+- Request: [URL] [POST]
+```
+```
+- Response:
+```
+```
+---
+- Usuario: Jenny
+- Request: [URL] [POST]
+```
+```
+- Response:
+```
+```
+### Rafael Cria 1 Cotação:
+---
+- Usuario: Rafael
+- Request: [URL] [POST]
+```
+```
+- Response:
+```
+```
+### Um usuario busca todas as cotações:
+---
+- Usuario: *
+- Request: [URL] [GET]
+```
+```
+- Response:
+```
+```
+### Um usuario busca todas as cotações:
+---
+- Usuario: *
+- Request: [URL] [GET]
+```
+```
+- Response:
+```
+``` 
+### Jenny busca todas as cotações:
+---
+- Usuario: jenny
+- Request: [URL] [GET]
+```
+```
+- Response:
+```
+``` 
+
+### Rafael busca todas as cotações:
+---
+- Usuario: jenny
+- Request: [URL] [GET]
+```
+```
+- Response:
+```
+``` 
+
