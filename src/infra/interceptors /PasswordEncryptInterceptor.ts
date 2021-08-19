@@ -7,8 +7,8 @@ import * as crypto from 'crypto';
 export class PasswordEncryptInterceptor implements NestInterceptor {
   async intercept(context: ExecutionContext, next: CallHandler): Promise<Observable<any>> {
     const userCredentials = context.switchToHttp().getRequest().body;
-    if(userCredentials.password.length < 4) {
-      throw new BadRequestException('Very easy password')
+    if (userCredentials.password.length < 4) {
+      throw new BadRequestException('Very easy password');
     }
 
     userCredentials.password = await this.encryptPassword(userCredentials.password);

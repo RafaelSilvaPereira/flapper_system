@@ -1,9 +1,8 @@
-import { Body, Controller, Get, Post, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Post, UseInterceptors } from '@nestjs/common';
 import { AuthenticationService } from '../../../adapters/services/AuthenticationService';
 import { UserCredentialsModel } from '../../../core/models/UserCredentialsModel';
 import { BaseDatabaseModel } from '../../../core/models/BaseDatabaseModel';
 import { UserAuthorizationModel } from '../../../core/models/UserAuthorization';
-import { JwtAuthGuard } from '../../guards/JwtAuthGuard';
 import { PasswordEncryptInterceptor } from '../../interceptors /PasswordEncryptInterceptor';
 
 @Controller('auth')

@@ -28,7 +28,7 @@ export class PositionQuotationController {
 
   @UseGuards(JwtAuthGuard)
   @Get('/my')
-  async getMyPositionQuotations( @GetCurrentUserId() id: string ): Promise<PositionQuotationModel[]>{
+  async getMyPositionQuotations(@GetCurrentUserId() id: string): Promise<PositionQuotationModel[]> {
     return this.service.getMyPositionQuotations(id);
   }
 

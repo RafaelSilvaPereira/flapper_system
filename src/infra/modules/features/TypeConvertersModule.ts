@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { PositionQuotationEntityModelConverter } from '../../../adapters/converters/PositionQuotationEntityModelConverter';
 import { CustomerEntityModelConverter } from '../../../adapters/converters/CustomerEntityModelConverter';
-import { LoadDimensionsEntityModelConverter } from '../../../core/models/LoadDimensionsEntityModelConverter';
+import { LoadDimensionsEntityModelConverter } from '../../../adapters/converters/LoadDimensionsEntityModelConverter';
 import { TransportEntityModelConverter } from '../../../adapters/converters/TransportEntityModelConverter';
 import { UserEntityUserCredentialsConverter } from '../../../adapters/converters/UserEntityUserCredentialsConverter';
 

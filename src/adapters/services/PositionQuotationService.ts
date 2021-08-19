@@ -14,7 +14,7 @@ export class PositionQuotationService {
     private readonly savePositionQuotation: CreatePositionQuotation,
     private readonly getAllPositionQuotations: GetAllPositionQuotation,
     private readonly getCurrentUserPositionQuotations: GetCurrentUserPositionQuotations,
-    private readonly calculatePositionQuotationsCubedWeight: CalculatePositionQuotationsCubedWeight
+    private readonly calculatePositionQuotationsCubedWeight: CalculatePositionQuotationsCubedWeight,
   ) {
   }
 

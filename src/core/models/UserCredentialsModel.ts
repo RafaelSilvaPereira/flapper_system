@@ -1,5 +1,3 @@
-import crypto from 'crypto';
-
 export class UserCredentialsModel {
   readonly id?: string;
   readonly username: string;
@@ -7,7 +5,7 @@ export class UserCredentialsModel {
 
   constructor(builder: Partial<UserCredentialsModel>) {
     let data;
-    if( builder ) {
+    if (builder) {
       data = {
         username: builder.username,
         password: builder.password,

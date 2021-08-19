@@ -1,4 +1,4 @@
-import { And, Or, RequiredAllOrOmitId, RequiredAllOrOmitKeys } from '../types/ConstructorsBuildingTypes';
+import { RequiredAllOrOmitKeys } from '../types/ConstructorsBuildingTypes';
 
 export class LoadDimensionsModel {
   readonly id?: string;

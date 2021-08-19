@@ -18,15 +18,15 @@ export class AppService {
 
   }
 
-  private async extracted()  {
+  getHello(): string {
+    return 'Hello World!';
+  }
+
+  private async extracted() {
     const customerEntityPagination = await this.customerRepository.paginate({
       page: 2,
       limit: 2,
     });
 
-  }
-
-  getHello(): string {
-    return 'Hello World!';
   }
 }

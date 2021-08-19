@@ -7,7 +7,7 @@ import { EntityBuilderType } from '../../utils/EntityBuilderType';
 import { UserEntity } from './UserEntity';
 import { IsNotEmptyObject } from 'class-validator';
 
-@Entity({name: 'position_quotation'})
+@Entity({ name: 'position_quotation' })
 export class PositionQuotationEntity extends IBaseEntity {
 
   @OneToOne(
@@ -16,7 +16,7 @@ export class PositionQuotationEntity extends IBaseEntity {
       eager: true,
     },
   )
-  @JoinColumn({name: 'fk_customer'})
+  @JoinColumn({ name: 'fk_customer' })
   @IsNotEmptyObject()
   readonly customer: CustomerEntity;
 

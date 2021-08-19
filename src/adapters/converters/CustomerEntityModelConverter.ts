@@ -26,7 +26,7 @@ export class CustomerEntityModelConverter implements EntityModelConverter<Custom
       name: name,
       id: id,
       email: email,
-      phone: phone
+      phone: phone,
     });
   }
 

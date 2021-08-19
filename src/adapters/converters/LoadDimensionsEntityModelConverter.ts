@@ -1,6 +1,6 @@
-import { EntityModelConverter } from '../../adapters/converters/EntityModelConverter';
+import { EntityModelConverter } from './EntityModelConverter';
 import { LoadDimensionsEntity } from '../../infra/database/entities/LoadDimensionsEntity';
-import { LoadDimensionsModel } from './LoadDimensionsModel';
+import { LoadDimensionsModel } from '../../core/models/LoadDimensionsModel';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()

@@ -1,4 +1,4 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository } from 'typeorm';
 import { LoadDimensionsEntity } from '../entities/exports.entities';
 import { BaseRepository } from './BaseRepository';
 

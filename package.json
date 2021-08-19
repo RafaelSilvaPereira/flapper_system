@@ -81,7 +81,8 @@
       "ts"
     ],
     "roots": [
-      "src",
+      "src/core",
+      "src/adapters/connectors",
       "test"
     ],
     "testEnvironment": "node",

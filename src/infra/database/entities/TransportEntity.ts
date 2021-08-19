@@ -3,7 +3,7 @@ import { Column, Entity } from 'typeorm';
 import { EntityBuilderType } from '../../utils/EntityBuilderType';
 import { IsNotEmpty, IsString } from 'class-validator';
 
-@Entity({name: 'transport'})
+@Entity({ name: 'transport' })
 export class TransportEntity extends IBaseEntity {
 
   @Column({ name: 'origin_city', nullable: false })

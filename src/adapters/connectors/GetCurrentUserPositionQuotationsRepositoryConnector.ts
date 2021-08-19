@@ -20,7 +20,7 @@ export class GetCurrentUserPositionQuotationsRepositoryConnector implements GetC
       },
     });
 
-    return Promise.all(userPositionQuotationsEntities.map((entity )=> this.positionQuotationEntityModelConverter.toModel(entity)));
+    return Promise.all(userPositionQuotationsEntities.map((entity) => this.positionQuotationEntityModelConverter.toModel(entity)));
   }
 
 }

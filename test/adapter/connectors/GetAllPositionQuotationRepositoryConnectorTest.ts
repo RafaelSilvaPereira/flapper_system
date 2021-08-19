@@ -14,7 +14,7 @@ import { LoadDimensionsModel } from '../../../src/core/models/LoadDimensionsMode
 import { CustomerModel } from '../../../src/core/models/CustomerModel';
 import { PositionQuotationEntityModelConverter } from '../../../src/adapters/converters/PositionQuotationEntityModelConverter';
 import { CustomerEntityModelConverter } from '../../../src/adapters/converters/CustomerEntityModelConverter';
-import { LoadDimensionsEntityModelConverter } from '../../../src/core/models/LoadDimensionsEntityModelConverter';
+import { LoadDimensionsEntityModelConverter } from '../../../src/adapters/converters/LoadDimensionsEntityModelConverter';
 import { TransportEntityModelConverter } from '../../../src/adapters/converters/TransportEntityModelConverter';
 
 describe('GetAllPositionQuotation Test', () => {

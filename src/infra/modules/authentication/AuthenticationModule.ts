@@ -44,7 +44,7 @@ const providers = [
     PassportModule,
     TypeOrmModule.forFeature([UserRepository]),
     JwtModule.register({
-      secret: JwtConstants.SECRET
+      secret: JwtConstants.SECRET,
     }),
     TypeConvertersModule,
   ],

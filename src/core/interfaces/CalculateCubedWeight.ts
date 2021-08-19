@@ -1,4 +1,3 @@
-
 import { CubageWeightModel } from '../models/CubageWeightModel';
 import { LoadDimensionsModel } from '../models/LoadDimensionsModel';
 

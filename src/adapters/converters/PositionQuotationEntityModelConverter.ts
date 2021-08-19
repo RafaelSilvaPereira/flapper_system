@@ -3,7 +3,7 @@ import { PositionQuotationEntity } from '../../infra/database/entities/PositionQ
 import { PositionQuotationModel } from '../../core/models/PositionQuotationModel';
 import { Injectable } from '@nestjs/common';
 import { CustomerEntityModelConverter } from './CustomerEntityModelConverter';
-import { LoadDimensionsEntityModelConverter } from '../../core/models/LoadDimensionsEntityModelConverter';
+import { LoadDimensionsEntityModelConverter } from './LoadDimensionsEntityModelConverter';
 import { TransportEntityModelConverter } from './TransportEntityModelConverter';
 import { UserEntity } from '../../infra/database/entities/UserEntity';
 

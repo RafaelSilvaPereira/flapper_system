@@ -1,9 +1,10 @@
-import { TypeOrmModule } from "@nestjs/typeorm";
+import { TypeOrmModule } from '@nestjs/typeorm';
 import {
   CustomerEntity,
   LoadDimensionsEntity,
   PositionQuotationEntity,
-  TransportEntity, UserEntity,
+  TransportEntity,
+  UserEntity,
 } from '../../database/entities/exports.entities';
 
 export const ConnectionConfiguration = TypeOrmModule.forRoot({

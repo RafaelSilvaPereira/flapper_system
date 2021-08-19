@@ -3,7 +3,7 @@ import { IBaseEntity } from './IBaseEntity';
 import { EntityBuilderType } from '../../utils/EntityBuilderType';
 import { IsNotEmpty, IsPositive } from 'class-validator';
 
-@Entity({name: 'load_dimensions'})
+@Entity({ name: 'load_dimensions' })
 export class LoadDimensionsEntity extends IBaseEntity {
 
   @Column({ name: 'weight', nullable: false })

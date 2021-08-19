@@ -8,7 +8,7 @@ import { BaseDatabaseModel } from '../models/BaseDatabaseModel';
 export class CreatePositionQuotationUsecase implements CreatePositionQuotation {
 
   constructor(
-    private readonly savePositionQuotationProtocol: CreatePositionQuotationProtocol
+    private readonly savePositionQuotationProtocol: CreatePositionQuotationProtocol,
   ) {
   }
 

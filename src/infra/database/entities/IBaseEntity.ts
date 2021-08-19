@@ -1,5 +1,4 @@
 import { CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { IsDate, IsUUID } from 'class-validator';
 
 
 export abstract class IBaseEntity {
