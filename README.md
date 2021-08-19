@@ -82,27 +82,43 @@ Para explicar o funcionamento dela, vamos supor 2 usuarios, 'jenny' e 'rafael' q
 #### Jenny e Rafael criam um usuario no sistema
 ---
 - Usuario: Jenny
-- Request: [URL] [TIPO]
+- Request: [http://localhost:3000/auth/create] [POST]
 ```
+{
+	"username": "jenny",
+	"password": "1234"
+}
 ```
 - Response:
 ```
+{
+  "id": "5262ac93-26aa-4818-86aa-c7dd7c70b068",
+  "createdAt": "2021-08-19T14:26:46.000Z",
+  "updatedAt": "2021-08-19T14:26:46.000Z"
+}
 ```
 ---
 - Usuario: Rafael
-- Request: [URL] [TIPO]
+- Request: [http://localhost:3000/auth/create] [POST]
 ```
 ```
 - Response:
 ```
+{
+  "id": "5362bc93-14aa-4818-86aa-c7dd7c70b068",
+  "createdAt": "2021-08-19T14:26:56.000Z",
+  "updatedAt": "2021-08-19T14:26:56.000Z"
+}
 ```
-
-para a rota "user", como nas imagens abaixo:
 #### Jenny Loga-se no sistema
 ---
 - Usuario: Jenny
 - Request: [URL] [POST]
-```
+```json
+{
+	"username": "rafael",
+	"password": "1234"
+}
 ```
 - Response:
 ```
@@ -110,7 +126,7 @@ para a rota "user", como nas imagens abaixo:
 ### Jenny Cria 2 Cotações
 ---
 - Usuario: Jenny
-- Request: [URL] [POST]
+- Request: [http://localhost:3000/auth/login] [POST]
 ```
 ```
 - Response:
